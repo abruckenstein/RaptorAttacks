@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import raptor from './images/raptor_flipped.png';
 import './App.css';
 import fire from './fire'
 
@@ -22,7 +22,6 @@ class App extends Component {
 
     var ref = fire.database().ref();
     var usersRef = ref.child('users');
-    var user;
     usersRef.on('value', function (snap) {
       console.log(snap.val());
 });
@@ -33,19 +32,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        <img src={raptor}></img>
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Days since last raptor attack : 
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <body className="App-body">#XX</body>
       </div>
     );
   }
