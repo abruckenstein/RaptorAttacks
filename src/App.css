@@ -25,6 +25,10 @@
   font-family: 'solsticeofsufferingregular';
 }
 
+.Header-image{
+  max-width: 30vw;
+}
+
 @font-face {
   font-family: 'solsticeofsufferingregular';
   src: url('/assets/fonts/solsticeofsuffering-webfont.eot');
