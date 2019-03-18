@@ -17,10 +17,12 @@ class App extends Component {
 
     // ref.push(obj);
     var ref = fire.database().ref();
-    var usersRef = ref.child('RaptorAttacks/-La7kJTwyJg3Bjvo3em7');
+    var usersRef = ref.child('RaptorAttacks');
     usersRef.on('value',  (snap) => {
-      this.setState({days: snap.val().time});
+      console.log(new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime));
+      this.setState({days: snap.val()});
     });
+    //this.pushToDB();
     
   }
 
@@ -39,8 +41,9 @@ class App extends Component {
   }
 
   pushToDB() {
-    var x = new Date().getTime();
-    fire.database().ref('RaptorAttacks').push({startTime: x}) //Adds object to RaptorAttacks, this is to add previous code red dates
+    var one = {endDateTime: (new Date().setDate(new Date().getDate()-17)), startDateTime:(new Date().setDate(new Date().getDate()-20))};
+    var two = {endDateTime: (new Date().setDate(new Date().getDate()-20)), startDateTime:(new Date().setDate(new Date().getDate()-75))};
+    fire.database().ref('RaptorAttacks').push(two) //Adds object to RaptorAttacks, this is to add previous code red dates
     //Should get most recent raptor attack, and determine days since last by start date. Then when reset, add endate and create new entry
   }
 
