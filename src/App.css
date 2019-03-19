@@ -49,22 +49,22 @@
   transition: all 0.2s;
   }
    /* unvisited link */
-a.Button:link {
+button.Button:link {
   color: white;
 }
 
 /* visited link */
-a.Button:visited {
+button.Button:visited {
   color: white;
 }
 
 /* mouse over link */
-a.Button:hover {
+button.Button:hover {
   color: rgb(202, 0, 0);
 }
 
 /* selected link */
-a.Button:active {
+button.Button:active {
   color: white;
 } 
   a.button:hover{
