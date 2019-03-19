@@ -17,7 +17,7 @@ class App extends Component {
     datesRef.on('value', (snap) => {
       var latestEndDateTime = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
       this.calcDays(latestEndDateTime);
-    });    
+    });
   }
 
   render() {
@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   getCurrentKeyThenPush = () => {
+    return;
     var ref = fire.database().ref();
     var datesRef = ref.child('RaptorAttacks');
     datesRef.limitToLast(1).once('value', (snap) => {this.pushToDB(Object.keys(snap.val())[0])})

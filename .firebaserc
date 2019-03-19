@@ -1,6 +1,5 @@
 {
   "projects": {
-    "dev": "raptorattackcounter",
     "default": "raptorattackcounter"
   }
 }
