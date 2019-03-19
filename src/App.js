@@ -19,8 +19,8 @@ class App extends Component {
     var ref = fire.database().ref();
     var usersRef = ref.child('RaptorAttacks');
     usersRef.on('value',  (snap) => {
-      console.log(new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime));
-      this.setState({days: snap.val()});
+      var latestEndDateTime = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
+      this.setState({days: latestEndDateTime});
     });
     //this.pushToDB();
     
@@ -35,7 +35,10 @@ class App extends Component {
             Days since last raptor attack :
           </p>
         </header>
-        <body className='App-body'>{this.calcDays()}</body>
+        <div className='App-body'>
+        {this.calcDays()}
+        <a href="something" class="Button">Button 1</a>
+        </div>
       </div>
     );
   }
