@@ -11,7 +11,7 @@ class App extends Component {
     this.setState = this.setState.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
 
     //var userId = fire.auth().currentUser.uid;
 
@@ -20,7 +20,7 @@ class App extends Component {
     var usersRef = ref.child('RaptorAttacks');
     usersRef.on('value',  (snap) => {
       var latestEndDateTime = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
-      this.setState({days: latestEndDateTime});
+      this.calcDays(latestEndDateTime);
     });
     //this.pushToDB();
     
@@ -36,8 +36,8 @@ class App extends Component {
           </p>
         </header>
         <div className='App-body'>
-        {this.calcDays()}
-        <a href="something" class="Button">Button 1</a>
+        {this.state.days}
+        <a href="something" className="Button">Reset Counter</a>
         </div>
       </div>
     );
@@ -50,13 +50,12 @@ class App extends Component {
     //Should get most recent raptor attack, and determine days since last by start date. Then when reset, add endate and create new entry
   }
 
-  calcDays(){
+  calcDays(latestEndDateTime){
     
     const oneDay = 24*60*60*1000;
     var today = new Date();
-    var x =  Math.round(Math.abs(((today.getTime() - this.state.days)/(oneDay))))
-    return x;
-
+    var daysSinceLastAttack =  Math.round(Math.abs(((today.getTime() - latestEndDateTime)/(oneDay))))
+    this.setState({days: daysSinceLastAttack})
   }
 }
 

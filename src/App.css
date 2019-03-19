@@ -7,8 +7,9 @@
 
 .App-header {
   background-color: #111214;
+  font-family: 'Times New Roman', Times, serif;
   display: inline-grid;
-  min-height: 30vh;
+  height: 30vh;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -17,36 +18,56 @@
 
 .App-body{
   background-color: #282c34;
-  min-height: 70vh;
+  height: 70vh;
   align-items: center;
   display: inline-grid;
   color: rgb(202, 0, 0);
-  font-size: 60px;
+  font-size: 15vw;
   font-family: 'solsticeofsufferingregular';
 }
 
 .Header-image{
   max-width: 30vw;
+  height: 21vh;
 }
 
 .Button{
   display:inline-grid;
-  background-color: green;
-  color: green;
+  background-color: black;
+  color: rgb(202, 0, 0);
   padding:0.3em 1.2em;
-  width:30vw;
+  width:20vw;
   margin:auto;
   border:0.16em solid rgba(255,255,255,0);
   border-radius:2em;
   text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  font-weight:300;
+  font-family:'solsticeofsufferingregular', 'Roboto',sans-serif;
+  font-size: 3vw;
   color:#FFFFFF;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
   text-align:center;
   transition: all 0.2s;
   }
-  a.button4:hover{
+   /* unvisited link */
+a.Button:link {
+  color: white;
+}
+
+/* visited link */
+a.Button:visited {
+  color: white;
+}
+
+/* mouse over link */
+a.Button:hover {
+  color: rgb(202, 0, 0);
+}
+
+/* selected link */
+a.Button:active {
+  color: white;
+} 
+  a.button:hover{
   border-color: rgba(255,255,255,1);
   }
   @media all and (max-width:30em){
@@ -58,12 +79,12 @@
 
 @font-face {
   font-family: 'solsticeofsufferingregular';
-  src: url('/assets/fonts/solsticeofsuffering-webfont.eot');
-  src: url('/assets/fonts/solsticeofsuffering-webfont.eot?#iefix') format('embedded-opentype'),
-       url('/assets/fonts/solsticeofsuffering-webfont.woff2') format('woff2'),
-       url('/assets/fonts/solsticeofsuffering-webfont.woff') format('woff'),
-       url('/assets/fonts/solsticeofsuffering-webfont.ttf') format('truetype'),
-       url('/assets/fonts/solsticeofsuffering-webfont.svg#solsticeofsufferingregular') format('svg');
+  src: url('./fonts/solsticeofsuffering-webfont.eot');
+  src: url('./fonts/solsticeofsuffering-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./fonts/solsticeofsuffering-webfont.woff2') format('woff2'),
+       url('./fonts/solsticeofsuffering-webfont.woff') format('woff'),
+       url('./fonts/solsticeofsuffering-webfont.ttf') format('truetype'),
+       url('./fonts/solsticeofsuffering-webfont.svg#solsticeofsufferingregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
