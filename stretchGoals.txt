@@ -1,0 +1,11 @@
+Stretch Goals:
+
+Priority:
+    History Sidebar
+    Reason section for past code reds
+
+Nice to haves:
+    Scream audio on reset clicked
+    Siren during code red
+    Hot swappable themes (i.e. click a button to change to tech/coder theme, button to switch back to horror theme, etc)
+    
