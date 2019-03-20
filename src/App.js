@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   getCurrentKeyThenPush = () => {
-    return;
+    //return;
     var ref = fire.database().ref();
     var datesRef = ref.child('RaptorAttacks');
     datesRef.limitToLast(1).once('value', (snap) => {this.pushToDB(Object.keys(snap.val())[0])})
