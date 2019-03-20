@@ -3,6 +3,8 @@ Stretch Goals:
 Priority:
     History Sidebar
     Reason section for past code reds
+    Add sign-in, so only authenticated users can click code red button, stopgap until next goal
+    Automatic code red detection via slack
 
 Nice to haves:
     Scream audio on reset clicked
