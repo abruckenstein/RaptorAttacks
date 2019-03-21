@@ -12,12 +12,13 @@ class App extends Component {
   }
 
   componentWillMount() {
-    var ref = fire.database().ref();
-    var datesRef = ref.child('RaptorAttacks');
-    datesRef.on('value', (snap) => {
-      var latestEndDateTime = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
-      this.calcDays(latestEndDateTime);
-    });
+    
+    this.getLatestEndDate();
+    this.interval = setInterval(() => this.getLatestEndDate(), 1800000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
@@ -50,11 +51,21 @@ class App extends Component {
     datesRef.limitToLast(1).once('value', (snap) => {this.pushToDB(Object.keys(snap.val())[0])})
   }
 
-  calcDays = (latestEndDateTime) => {
+  calcDays = (latestEndDate) => {
     const oneDay = 24*60*60*1000;
     var today = new Date();
-    var daysSinceLastAttack = Math.round(Math.abs(((today.getTime() - latestEndDateTime)/(oneDay))))
+    var daysSinceLastAttack = Math.round(Math.abs(((today.getTime() - latestEndDate)/(oneDay))))
     this.setState({days: daysSinceLastAttack})
+  }
+
+  getLatestEndDate = () => {
+    var ref = fire.database().ref();
+    var datesRef = ref.child('RaptorAttacks');
+    var latestEndDate = null;
+    datesRef.on('value', (snap) => {
+      latestEndDate = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
+      this.calcDays(latestEndDate);
+    });
   }
 
   resetPastDates = () => {
