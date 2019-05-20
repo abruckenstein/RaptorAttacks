@@ -8,7 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { days: 0 }; 
-    this.setState = this.setState.bind(this)
+    // this.setState = this.setState.bind(this)
   }
 
   componentWillMount() {
@@ -63,8 +63,9 @@ class App extends Component {
     var datesRef = ref.child('RaptorAttacks');
     var latestEndDate = null;
     datesRef.on('value', (snap) => {
-      latestEndDate = new Date(Object.values(snap.val()).sort((a, b) => a.endDateTime < b.endDateTime)[0].endDateTime);
-      this.calcDays(latestEndDate);
+      var dates = Object.values(snap.val());
+      const latestEndDate = dates.filter(it=>it.endDateTime).map(it=>it.endDateTime).sort((a,b) => a < b ? 1 : -1)[0]
+      this.calcDays(new Date(latestEndDate));
     });
   }
 
