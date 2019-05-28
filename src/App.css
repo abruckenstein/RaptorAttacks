@@ -21,10 +21,16 @@
   background-color: #2c2828;
   height: 70vh;
   align-items: center;
+  grid-template-columns: 1fr 2fr;
   display: inline-grid;
   color: rgb(202, 0, 0);
   font-size: 20vh;
   font-family: 'solsticeofsufferingregular';
+}
+
+.Sidebar{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 4vh;
 }
 
 p{
