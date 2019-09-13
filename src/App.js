@@ -69,6 +69,19 @@ class App extends Component {
     });
   };
 
+  getLastTenDbItems = () => {
+    var ref = fire.database().ref();
+    var datesRef = ref.child("RaptorAttacks");
+    datesRef.on("value", snap => {
+      var dates = Object.values(snap.val());
+      var lastTen = dates.sort((a, b) => (a.endDateTime < b.endDateTime ? 1 : -1)) //continue here
+    });
+  };
+
+  calcDifference = x => {
+
+  };
+
   calcDays = latestEndDate => {
     const oneDay = 24 * 60 * 60 * 1000;
     var today = new Date();
@@ -81,7 +94,6 @@ class App extends Component {
   getLatestEndDate = () => {
     var ref = fire.database().ref();
     var datesRef = ref.child("RaptorAttacks");
-    var latestEndDate = null;
     datesRef.on("value", snap => {
       var dates = Object.values(snap.val());
       const latestEndDate = dates
