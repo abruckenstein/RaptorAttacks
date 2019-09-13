@@ -7,7 +7,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { days: 0 };
-    // this.setState = this.setState.bind(this)
   }
 
   componentWillMount() {
@@ -19,6 +18,7 @@ class App extends Component {
     clearInterval(this.interval);
   }
 
+  //Fix size of sidebar and main section. Sidebar is too large
   render() {
     return (
       <div className="App">
@@ -27,11 +27,16 @@ class App extends Component {
           <p>Days since last raptor attack:</p>
         </header>
         <div className="App-body">
-          <div className="Sidebar">blah</div>
+          <div className="Sidebar">
+            <ul>
+              <li>blah</li>
+              <li>blah</li>
+              <li>blah</li>
+              <li>blah</li>
+            </ul>
+          </div>
           <div>
-            <div>
-            {this.state.days}
-            </div>
+            <div>{this.state.days}</div>
             <button onClick={this.getCurrentKeyThenPush} className="Button">
               Reset Counter
             </button>
@@ -40,6 +45,9 @@ class App extends Component {
       </div>
     );
   }
+
+  //Write function to get list of duration of last 10 code reds
+  //Something like last 10 end dates minus last 10 start dates
 
   pushToDB = currentCountKey => {
     fire
